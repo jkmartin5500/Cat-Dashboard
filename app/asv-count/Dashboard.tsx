@@ -20,9 +20,10 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import { mainListItems, secondaryListItems } from './listItems';
-import Chart from './Chart';
+import Graph from './Graph';
 import Deposits from './Deposits';
-import Orders from './Orders';
+import Sheet from './Sheet';
+import * as types from '../types';
 
 function Copyright(props: any) {
   return (
@@ -87,7 +88,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   }),
 );
 
-export default function Dashboard() {
+export default function Dashboard( { totalCountData, asvCountData}: { totalCountData: types.TotalDataItem[], asvCountData: types.AsvDataItem[] } ) {
   const [open, setOpen] = React.useState(true);
   const toggleDrawer = () => {
     setOpen(!open);
@@ -174,7 +175,7 @@ export default function Dashboard() {
                     height: 240,
                   }}
                 >
-                  <Chart />
+                  <Graph data={totalCountData} />
                 </Paper>
               </Grid>
               {/* Recent Deposits */}
@@ -193,7 +194,7 @@ export default function Dashboard() {
               {/* Recent Orders */}
               <Grid item xs={12}>
                 <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
-                  <Orders />
+                  <Sheet data={asvCountData}/>
                 </Paper>
               </Grid>
             </Grid>
