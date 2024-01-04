@@ -88,7 +88,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   }),
 );
 
-export default function Dashboard( { totalCountData, asvCountData}: { totalCountData: types.TotalDataItem[], asvCountData: types.AsvDataItem[] } ) {
+export default function Dashboard( { asvCountData}: { asvCountData: any[] } ) {
   const [open, setOpen] = React.useState(true);
   const toggleDrawer = () => {
     setOpen(!open);
@@ -175,7 +175,7 @@ export default function Dashboard( { totalCountData, asvCountData}: { totalCount
                     height: 240,
                   }}
                 >
-                  <Graph data={totalCountData} />
+                  <Graph data={asvCountData} />
                 </Paper>
               </Grid>
               {/* Recent Deposits */}
